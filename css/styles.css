@@ -1,0 +1,170 @@
+/*! MurshalAkhtar v0.0.1 | (c) 2021 Murshal Akhtar Ansari | MIT License | http://link-to-your-git-repo.com */
+/* line 1, src/sass/_utilities.scss */
+.d-flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+/* line 5, src/sass/_utilities.scss */
+
+/* line 9, src/sass/_utilities.scss */
+
+/* line 13, src/sass/_utilities.scss */
+
+/* line 17, src/sass/_utilities.scss */
+
+/* line 21, src/sass/_utilities.scss */
+
+/* line 25, src/sass/_utilities.scss */
+
+/* line 29, src/sass/_utilities.scss */
+
+/* line 35, src/sass/_utilities.scss */
+
+/* line 39, src/sass/_utilities.scss */
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* line 44, src/sass/_utilities.scss */
+
+/* line 49, src/sass/_utilities.scss */
+
+/* line 53, src/sass/_utilities.scss */
+
+/* line 57, src/sass/_utilities.scss */
+
+/* line 61, src/sass/_utilities.scss */
+
+/* line 66, src/sass/_utilities.scss */
+
+/* line 70, src/sass/_utilities.scss */
+
+/* line 75, src/sass/_utilities.scss */
+
+/* line 80, src/sass/_utilities.scss */
+
+/* line 84, src/sass/_utilities.scss */
+
+/* line 88, src/sass/_utilities.scss */
+
+/* line 92, src/sass/_utilities.scss */
+
+/* line 95, src/sass/_utilities.scss */
+.img-fluid {
+  width: 100%;
+  height: auto;
+}
+
+/* Box sizing rules */
+/* line 2, src/sass/_base.scss */
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+/* Remove default padding */
+/* line 9, src/sass/_base.scss */
+ul[class] {
+  padding: 0;
+}
+
+/* Remove default margin */
+/* line 15, src/sass/_base.scss */
+body,
+h1,
+h2,
+p,
+ul[class],
+li {
+  margin: 0;
+}
+
+/* Set core body defaults */
+/* line 33, src/sass/_base.scss */
+body {
+  min-height: 100vh;
+  scroll-behavior: smooth;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* Remove list styles on ul, ol elements with a class attribute */
+/* line 41, src/sass/_base.scss */
+ul[class] {
+  list-style: none;
+}
+
+/* A elements that don't have a class get default styles */
+/* line 48, src/sass/_base.scss */
+a {
+  text-decoration: none;
+}
+
+/* line 50, src/sass/_base.scss */
+a:not([class]) {
+  position: relative;
+}
+
+/* line 52, src/sass/_base.scss */
+a:not([class]):after {
+  content: " ";
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: gray;
+  border-radius: 50%;
+  position: absolute;
+  inset: 100% 0 0 0;
+}
+
+/* Make images easier to work with */
+/* line 66, src/sass/_base.scss */
+
+/* Natural flow and rhythm in articles by default */
+/* line 72, src/sass/_base.scss */
+article > * + * {
+  margin-top: 1em;
+}
+
+/* Inherit fonts for inputs and buttons */
+/* line 77, src/sass/_base.scss */
+
+button {
+  font: inherit;
+}
+
+/* Remove all animations and transitions for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  /* line 86, src/sass/_base.scss */
+  * {
+    -webkit-animation-duration: 0.01ms !important;
+            animation-duration: 0.01ms !important;
+    -webkit-animation-iteration-count: 1 !important;
+            animation-iteration-count: 1 !important;
+    -webkit-transition-duration: 0.01ms !important;
+            transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* line 1, src/sass/components/_navbar.scss */
+.navbar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+/* line 5, src/sass/components/_navbar.scss */
+.navbar-nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
