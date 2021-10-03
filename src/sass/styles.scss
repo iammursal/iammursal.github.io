@@ -1,14 +1,16 @@
-// Import Variables
+// Variables
 @import "variables";
-// Import Utilities
+// Bootstrap
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
+// Utilities
 @import "utilities";
-// Import Project Base
+// Project Base
 @import "base";
 
-// Import Components
-@import "components/navbar";
+// Components
+@import "components/header";
 @import "components/footer";
 @import "components/button";
 
-// Import Sections
+// Sections
 @import "sections/hero";

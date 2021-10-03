@@ -5,10 +5,11 @@
 
 var settings = {
   clean: true,
+  html: true,
   scripts: true,
-  polyfills: true,
+  polyfills: false,
   styles: true,
-  svgs: true,
+  imgs: true,
   copy: true,
   reload: true,
 };
@@ -25,13 +26,17 @@ var paths = {
     polyfills: ".polyfill.js",
     output: "dist/js/",
   },
+  html: {
+    input: "src/**/*.html",
+    output: "dist/",
+  },
   styles: {
     input: "src/sass/**/*.{scss,sass}",
     output: "dist/css/",
   },
-  svgs: {
-    input: "src/svg/*.svg",
-    output: "dist/svg/",
+  imgs: {
+    input: "src/img/**/*",
+    output: "dist/img/",
   },
   copy: {
     input: "src/copy/**/*",
@@ -70,6 +75,10 @@ var header = require("gulp-header");
 var package = require("./package.json");
 const ghPages = require("gulp-gh-pages");
 
+// HTML
+const htmlmin = require("gulp-htmlmin");
+const fileinclude = require("gulp-file-include");
+
 // Scripts
 var jshint = require("gulp-jshint");
 var stylish = require("jshint-stylish");
@@ -84,8 +93,8 @@ var postcss = require("gulp-postcss");
 var prefix = require("autoprefixer");
 var minify = require("cssnano");
 
-// SVGs
-var svgmin = require("gulp-svgmin");
+// Images
+var imagemin = require("gulp-imagemin");
 
 // BrowserSync
 var browserSync = require("browser-sync");
@@ -117,6 +126,21 @@ var jsTasks = lazypipe()
   .pipe(header, banner.main, { package: package })
   .pipe(dest, paths.scripts.output);
 
+// Repeated JavaScript tasks (Fast)
+var jsTasksMin = lazypipe()
+  .pipe(dest, paths.scripts.output)
+  .pipe(rename, { suffix: ".min" })
+  .pipe(dest, paths.scripts.output);
+
+// Repeated FileInclude Config
+var fileIncludeConfig = {
+  prefix: "@@",
+  basepath: "@file",
+};
+
+/* -------------------------------------------------------------------------- */
+/*                                    FULL                                    */
+/* -------------------------------------------------------------------------- */
 // Lint, minify, and concatenate scripts
 var buildScripts = function (done) {
   // Make sure this feature is activated before running
@@ -185,7 +209,7 @@ var buildStyles = function (done) {
     )
     .pipe(
       purgecss({
-        content: ["src/**/*.html"],
+        content: [paths.html.input],
       })
     )
     .pipe(
@@ -211,13 +235,24 @@ var buildStyles = function (done) {
     .pipe(dest(paths.styles.output));
 };
 
-// Optimize SVG files
-var buildSVGs = function (done) {
+// Optimize IMG files
+var buildIMGs = function (done) {
   // Make sure this feature is activated before running
-  if (!settings.svgs) return done();
+  if (!settings.imgs) return done();
 
-  // Optimize SVG files
-  return src(paths.svgs.input).pipe(svgmin()).pipe(dest(paths.svgs.output));
+  // Optimize IMG files
+  return src(paths.imgs.input)
+    .pipe(
+      imagemin([
+        imagemin.gifsicle({ interlaced: true }),
+        imagemin.mozjpeg({ quality: 80, progressive: true }),
+        imagemin.optipng({ optimizationLevel: 5 }),
+        imagemin.svgo({
+          plugins: [{ removeViewBox: true }, { cleanupIDs: false }],
+        }),
+      ])
+    )
+    .pipe(dest(paths.imgs.output));
 };
 
 // Copy static files into output folder
@@ -228,6 +263,133 @@ var copyFiles = function (done) {
   // Copy static files
   return src(paths.copy.input).pipe(dest(paths.copy.output));
 };
+
+// HTML minify
+var buildHtml = function (done) {
+  if (!settings.html) return done();
+
+  return src(paths.html.input)
+    .pipe(fileinclude(fileIncludeConfig))
+    .pipe(htmlmin({ collapseWhitespace: true }))
+    .pipe(dest(paths.html.output));
+};
+
+/* -------------------------------------------------------------------------- */
+
+/* -------------------------------------------------------------------------- */
+/*                                    FAST                                    */
+/* -------------------------------------------------------------------------- */
+
+// Concatenate and rename scripts
+var buildScriptsFast = function (done) {
+  // Make sure this feature is activated before running
+  if (!settings.scripts) return done();
+
+  //Scripts
+  // Run tasks on script files
+  return src(paths.scripts.input).pipe(
+    flatmap(function (stream, file) {
+      // If the file is a directory
+      if (file.isDirectory()) {
+        // Setup a suffix variable
+        var suffix = "";
+
+        // If separate polyfill files enabled
+        if (settings.polyfills) {
+          // Update the suffix
+          suffix = ".polyfills";
+
+          // Grab files that aren't polyfills, concatenate them, and process them
+          src([
+            file.path + "/*.js",
+            "!" + file.path + "/*" + paths.scripts.polyfills,
+          ])
+            .pipe(concat(file.relative + ".js"))
+            .pipe(dest, paths.scripts.output);
+        }
+
+        // Grab all files and concatenate them
+        // If separate polyfills enabled, this will have .polyfills in the filename
+        src(file.path + "/*.js")
+          .pipe(concat(file.relative + suffix + ".js"))
+          .pipe(jsTasksMin());
+
+        return stream;
+      }
+
+      // Otherwise, process the file
+      return stream.pipe(jsTasksMin());
+    })
+  );
+};
+
+// Compile to css, gen map and rename styles
+var buildStylesFast = function (done) {
+  // Make sure this feature is activated before running
+  if (!settings.styles) return done();
+  // Styles
+  return src(paths.styles.input)
+    .pipe(
+      sass({
+        outputStyle: "expanded",
+        sourceComments: true,
+      })
+    )
+    .pipe(rename({ suffix: ".min" }))
+    .pipe(dest(paths.styles.output));
+};
+
+// HTMl Compile
+var buildHtmlFast = function (done) {
+  // Make sure this feature is activated before running
+  if (!settings.html) return done();
+  // HTML
+  return src(paths.html.input)
+    .pipe(fileinclude(fileIncludeConfig))
+    .pipe(dest(paths.html.output));
+};
+
+// Copy some none processed stuffs
+var copyFilesExtra = function (done) {
+  // Make sure this feature is activated before running
+  if (!settings.copy) return done();
+
+  // Copy static files
+  src(paths.copy.input).pipe(dest(paths.copy.output));
+
+  // IMGs
+  src(paths.imgs.input).pipe(dest(paths.imgs.output));
+
+  done();
+};
+/* -------------------------------------------------------------------------- */
+
+/* ---------------------------- Watch for changes --------------------------- */
+var watchSource = function (done) {
+  watch(paths.input, series(exports.dev, reloadBrowser));
+  done();
+};
+var watchHTML = function (done) {
+  watch(paths.html.input, series(exports.html, reloadBrowser));
+  done();
+};
+var watchScripts = function (done) {
+  watch(paths.scripts.input, series(exports.scripts, reloadBrowser));
+  done();
+};
+var watchStyle = function (done) {
+  watch(paths.styles.input, series(exports.styles, reloadBrowser));
+  done();
+};
+var watchOthers = function (done) {
+  watch(
+    [paths.copy.input, paths.imgs.input],
+    // { ignored: [paths.styles.input, paths.scripts.input] },
+    series(exports.copyFilesExtra, reloadBrowser)
+  );
+  done();
+};
+/* -------------------------------------------------------------------------- */
 
 // Watch for changes to the src directory
 var startServer = function (done) {
@@ -252,25 +414,45 @@ var reloadBrowser = function (done) {
   done();
 };
 
-// Watch for changes
-var watchSource = function (done) {
-  watch(paths.input, series(exports.default, reloadBrowser));
-  done();
-};
-
-task("deploy", () => src("./dist/**/*").pipe(ghPages()));
-
-/**
- * Export Tasks
- */
-
-// Default task
-// gulp
-exports.default = series(
+/* -------------------------------------------------------------------------- */
+/*                                Export Tasks                                */
+/* -------------------------------------------------------------------------- */
+// Build for production
+exports.prod = series(
   cleanDist,
-  parallel(buildScripts, lintScripts, buildStyles, buildSVGs, copyFiles)
+  buildHtml,
+  parallel(buildScripts, buildStyles, buildIMGs, copyFiles)
+);
+// Build for development(faster)
+exports.dev = series(
+  cleanDist,
+  parallel(
+    buildHtmlFast,
+    buildScriptsFast,
+    buildStylesFast,
+    lintScripts,
+    copyFilesExtra
+  )
+);
+// Build for html(faster)
+exports.html = series(buildHtmlFast);
+// Build for scripts(faster)
+exports.scripts = series(parallel(buildScriptsFast, lintScripts));
+// Build for styles(faster)
+exports.styles = buildStylesFast;
+// Build for styles(faster)
+exports.copyFilesExtra = copyFilesExtra;
+
+// Build Dev, Start Server and Watch
+exports.watch = series(
+  exports.dev,
+  watchHTML,
+  startServer,
+  watchStyle,
+  watchScripts,
+  watchOthers
 );
 
-// Watch and reload
-// gulp watch
-exports.watch = series(exports.default, startServer, watchSource);
+// Github Pages
+task("deploy", () => src("./dist/**/*").pipe(ghPages()));
+/* -------------------------------------------------------------------------- */

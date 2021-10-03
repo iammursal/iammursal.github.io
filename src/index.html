@@ -32,40 +32,21 @@
 </head>
 
 <body>
-  <!-- Navbar -->
-  <nav class="navbar">
-    <div class="container-fluid">
-      <a class="img-fluid" href="#">Navbar</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav d-flex mx-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Contact</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+  <!-- Header -->
+  @@include('components/header.html')
 
   <main>
     <!-- Header -->
-    <section>
-      <header>
-        <p>Hi there, I'm'</p>
-        <h1>Murshal Akhtar</h1>
-        <h2>I build web & mobile apps.</h2>
-      </header>
-      <p>I'm a self-taught software developer and I am passionate about technology.</p>
-      <a href="mail:iammursal@gmail.com" class="btn">Get In Touch!</a>
+    <section class="hero bg-light">
+      <div class="container">
+        <header>
+          <h5 class="text-primary">Hi there, I'm</h5>
+          <h1 class="">Murshal Akhtar</h1>
+          <h2>I build web & mobile apps.</h2>
+        </header>
+        <p>I'm a self-taught software developer and I am passionate about technology.</p>
+        <a href="mail:iammursal@gmail.com" class="btn btn-primary">Get In Touch!</a>
+      </div>
     </section>
 
     <!-- Section -->
@@ -77,8 +58,7 @@
   <footer></footer>
 
   <!-- Scripts -->
-  <script src=" js/another-file.min.js"></script>
-  <script src="js/main.polyfills.min.js"></script>
+  <script src=" js/script.min.js"></script>
 </body>
 
 </html>
