@@ -240,6 +240,10 @@ a:not([href]):not([class]), a:not([href]):not([class]):hover {
 /* line 336, node_modules/bootstrap/scss/_reboot.scss */
 
 /* line 343, node_modules/bootstrap/scss/_reboot.scss */
+img,
+svg {
+  vertical-align: middle;
+}
 
 /* line 353, node_modules/bootstrap/scss/_reboot.scss */
 
@@ -405,6 +409,10 @@ summary {
 /* line 101, node_modules/bootstrap/scss/_type.scss */
 
 /* line 8, node_modules/bootstrap/scss/_images.scss */
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+}
 
 /* line 14, node_modules/bootstrap/scss/_images.scss */
 
@@ -4437,6 +4445,10 @@ summary {
 /* line 92, src/sass/_utilities.scss */
 
 /* line 95, src/sass/_utilities.scss */
+.img-fluid {
+  width: 100%;
+  height: auto;
+}
 
 /* line 3, src/sass/_base.scss */
 body {
@@ -4494,4 +4506,10 @@ p {
 /* line 10, src/sass/components/_header.scss */
 .navbar {
   height: 60px;
+}
+
+/* line 13, src/sass/components/_header.scss */
+.navbar-brand {
+  height: auto;
+  width: 3%;
 }
