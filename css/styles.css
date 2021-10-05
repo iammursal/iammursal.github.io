@@ -467,8 +467,29 @@ summary {
 }
 
 /* line 6, node_modules/bootstrap/scss/_grid.scss */
+.row {
+  --bs-gutter-x: 1.5rem;
+  --bs-gutter-y: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin-top: calc(var(--bs-gutter-y) * -1);
+  margin-right: calc(var(--bs-gutter-x) * -.5);
+  margin-left: calc(var(--bs-gutter-x) * -.5);
+}
 
 /* line 9, node_modules/bootstrap/scss/_grid.scss */
+.row > * {
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  width: 100%;
+  max-width: 100%;
+  padding-right: calc(var(--bs-gutter-x) * .5);
+  padding-left: calc(var(--bs-gutter-x) * .5);
+  margin-top: var(--bs-gutter-y);
+}
 
 /* line 73, node_modules/bootstrap/scss/mixins/_grid.scss */
 
@@ -667,6 +688,12 @@ summary {
   /* line 95, node_modules/bootstrap/scss/mixins/_grid.scss */
   /* line 95, node_modules/bootstrap/scss/mixins/_grid.scss */
   /* line 95, node_modules/bootstrap/scss/mixins/_grid.scss */
+  .col-lg-3 {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 auto;
+            flex: 0 0 auto;
+    width: 25%;
+  }
   /* line 95, node_modules/bootstrap/scss/mixins/_grid.scss */
   /* line 95, node_modules/bootstrap/scss/mixins/_grid.scss */
   /* line 95, node_modules/bootstrap/scss/mixins/_grid.scss */
@@ -4459,7 +4486,7 @@ body {
 
 /* line 9, src/sass/_base.scss */
 section {
-  width: 100vw;
+  width: 100%;
   min-height: 450px;
   height: calc(100vh - 60px);
   max-height: 1080px;
@@ -4488,8 +4515,15 @@ h1, .h1, h2, .h2, h5, .h5 {
 
 /* line 33, src/sass/_base.scss */
 p {
-  color: #666;
+  color: #6c757d;
   margin: 1.8rem 0;
+}
+
+/* line 38, src/sass/_base.scss */
+a:not([class]) {
+  text-decoration: none;
+  color: #343a40;
+  border-bottom: 2px solid #e9ecef;
 }
 
 /* line 2, src/sass/components/_header.scss */
