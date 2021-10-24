@@ -8,9 +8,6 @@ body {
 
 section {
   width: 100%;
-  min-height: 450px;
-  height: calc(100vh - #{$header-height});
-  max-height: 1080px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -18,21 +15,18 @@ section {
     // margin: 0 auto;
   }
 }
-h1 {
-  font-size: 3.5rem;
-}
+
 h1,
 h2,
 h3,
 h4,
 h5 {
-  line-height: 100%;
   font-weight: 700 !important;
   margin: 1.8rem 0;
 }
 p {
   color: $gray-600;
-  margin: 1.8rem 0;
+  // margin: 1.8rem 0;
 }
 
 a:not([class]) {

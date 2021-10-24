@@ -3,6 +3,8 @@
 // Bootstrap
 @import "../../node_modules/bootstrap/scss/bootstrap.scss";
 // Utilities
+@import "animations";
+// Utilities
 @import "utilities";
 // Project Base
 @import "base";
@@ -14,3 +16,6 @@
 
 // Sections
 @import "sections/hero";
+@import "sections/works";
+@import "sections/about";
+@import "sections/footer";

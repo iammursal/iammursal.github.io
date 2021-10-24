@@ -1,16 +1,15 @@
-.hero {
-  h1 {
-    margin: 1.8rem 0 0 -4px;
-  }
-  h2 {
-    font-weight: 500 !important;
-    margin: 0 0 1.8rem -2px;
-  }
-}
 .navbar {
   height: $header-height;
 }
 .navbar-brand {
   height: auto;
   width: 3%;
+}
+.social {
+  .nav-link {
+    margin: 1rem 0 1rem 1rem;
+    img {
+      opacity: 0.6;
+    }
+  }
 }

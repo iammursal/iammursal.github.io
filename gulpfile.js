@@ -85,9 +85,11 @@ var stylish = require("jshint-stylish");
 var concat = require("gulp-concat");
 var uglify = require("gulp-terser");
 var optimizejs = require("gulp-optimize-js");
+var cssnano = require("cssnano");
+var sourcemaps = require("gulp-sourcemaps");
 
 // Styles
-var sass = require("gulp-sass")(require("node-sass"));
+var sass = require("gulp-sass")(require("sass"));
 var purgecss = require("gulp-purgecss");
 var postcss = require("gulp-postcss");
 var prefix = require("autoprefixer");
@@ -203,6 +205,7 @@ var buildStyles = function (done) {
   return src(paths.styles.input)
     .pipe(
       sass({
+        includePaths: ["node_modules"],
         outputStyle: "expanded",
         sourceComments: true,
       })
@@ -218,6 +221,7 @@ var buildStyles = function (done) {
           cascade: true,
           remove: true,
         }),
+        cssnano(),
       ])
     )
     .pipe(header(banner.main, { package: package }))
@@ -329,13 +333,16 @@ var buildStylesFast = function (done) {
   if (!settings.styles) return done();
   // Styles
   return src(paths.styles.input)
+    .pipe(sourcemaps.init())
     .pipe(
       sass({
+        includePaths: ["node_modules"],
         outputStyle: "expanded",
         sourceComments: true,
       })
     )
     .pipe(rename({ suffix: ".min" }))
+    .pipe(sourcemaps.write("."))
     .pipe(dest(paths.styles.output));
 };
 
@@ -424,7 +431,7 @@ exports.prod = series(
   parallel(buildScripts, buildStyles, buildIMGs, copyFiles)
 );
 // Build for development(faster)
-exports.dev = series(
+exports.devBuild = series(
   cleanDist,
   parallel(
     buildHtmlFast,
@@ -444,8 +451,8 @@ exports.styles = buildStylesFast;
 exports.copyFilesExtra = copyFilesExtra;
 
 // Build Dev, Start Server and Watch
-exports.watch = series(
-  exports.dev,
+exports.dev = series(
+  exports.devBuild,
   watchHTML,
   startServer,
   watchStyle,
