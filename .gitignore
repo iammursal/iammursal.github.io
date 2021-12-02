@@ -1,11 +1,5 @@
-# Node
 node_modules
-dist
-test/results
-test/coverage
-
-## OS X
 .DS_Store
-._*
-.Spotlight-V100
-.Trashes
+dist
+dist-ssr
+*.local
