@@ -1,1 +1,0 @@
-import{r as i,n as r}from"./components-yolBKbWE.js";import{b as m}from"./heading-B4Yeofwf.js";const c="_hidden_1mhmf_2",f="_noise_1mhmf_1",h={hidden:c,noise:f},l=i.forwardRef(({className:e,showOnFocus:s,as:n="span",children:a,visible:o,...d},t)=>r.jsx(n,{className:m(h.hidden,e),"data-hidden":!o&&!s,"data-show-on-focus":s,ref:t,...d,children:a}));export{l as V};

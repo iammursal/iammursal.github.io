@@ -1,4 +1,4 @@
-import{r as e,n as y}from"./components-yolBKbWE.js";import{b as R,W as L,y as C,a as E,h as I,z as M,U as G,B as j,G as k,m as A,n as D,l as q,k as F,r as T,t as U}from"./throttle-mBj52wTY.js";import{u as V,b as W}from"./image-CqjDl62N.js";import{k as H,m as z,T as N}from"./heading-B4Yeofwf.js";import{u as B}from"./useWindowSize-CEYwA96n.js";import{W as P}from"./use-spring-DoMd8QZ4.js";const O=`#define PHONG
+import{r as e,n as y}from"./components-Ep370hT9.js";import{b as R,W as L,y as C,a as E,h as I,z as M,U as G,B as j,G as k,m as A,n as D,l as q,k as F,r as T,t as U}from"./throttle-mBj52wTY.js";import{u as V,b as W}from"./image-Ctv1T852.js";import{k as H,m as z,T as N}from"./heading-DJdNTOqn.js";import{u as B}from"./useWindowSize-DjtojTbb.js";import{W as P}from"./use-spring-BE8CLnYq.js";const O=`#define PHONG
 
 uniform vec3 diffuse;
 uniform vec3 emissive;

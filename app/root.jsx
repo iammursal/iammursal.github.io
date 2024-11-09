@@ -52,7 +52,8 @@ export const links = () => [
 
 export default function App() {
     const [isCursor, setIsCursor] = useState(false);
-    let { canonicalUrl, theme } = useLoaderData();
+    const canonicalUrl = 'iammursal.github.io';
+    let theme = 'dark';
     const fetcher = useFetcher();
     const { state } = useNavigation();
 
