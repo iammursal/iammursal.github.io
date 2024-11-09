@@ -1,0 +1,14 @@
+
+/* TEAM */
+Developer: Murshal Akhtar Ansari
+Contact: iammursal@gmail.com, iammursal.github.io/contact
+Twitter: iammursal
+LinkedIn: iammursal
+Github: iammursal
+Location: Kanpur, India.
+
+/* SITE */
+Last update: 2024/06/30
+Doctype: HTML5
+Components: React, Remix, Three.js, Framer Motion, etc.
+Software: VSCode
