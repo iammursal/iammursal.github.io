@@ -51,21 +51,24 @@ export const links = () => [
 
 
 export default function App() {
+    const [theme, setTheme] = useState(localStorage.getItem('theme') || 'dark');
     const [isCursor, setIsCursor] = useState(false);
     const canonicalUrl = 'iammursal.github.io';
-    let theme = 'dark';
     const fetcher = useFetcher();
     const { state } = useNavigation();
 
-    if (fetcher.formData?.has('theme')) {
-        theme = fetcher.formData.get('theme');
-    }
 
     function toggleTheme(newTheme) {
-        fetcher.submit(
-            { theme: newTheme ? newTheme : theme === 'dark' ? 'light' : 'dark' },
-            { action: '/api/set-theme', method: 'post' }
-        );
+        // if (newTheme) {
+        localStorage.setItem('theme', theme === 'dark' ? 'light' : 'dark');
+        setTheme(localStorage.getItem('theme'));
+        // } else {
+        //     localStorage.setItem('theme', theme === 'dark' ? 'light' : 'dark');
+        // }
+        // fetcher.submit(
+        //     { theme: newTheme ? newTheme : theme === 'dark' ? 'light' : 'dark' },
+        //     { action: '/api/set-theme', method: 'post' }
+        // );
     }
 
     useEffect(() => {
