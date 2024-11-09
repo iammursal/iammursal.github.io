@@ -2,30 +2,30 @@ import { lazy, useState } from 'react';
 import backgroundSfcLarge from '~/assets/sfc-background-large.jpg';
 import backgroundSfcPlaceholder from '~/assets/sfc-background-placeholder.jpg';
 import backgroundSfc from '~/assets/sfc-background.jpg';
-import imageSprLessonBuilderDarkLarge from '~/assets/sfc-dark-large.jpg';
-import imageSprLessonBuilderDarkPlaceholder from '~/assets/sfc-dark-placeholder.jpg';
-import imageSprLessonBuilderDark from '~/assets/sfc-dark.jpg';
+import imageSfcLessonBuilderDarkLarge from '~/assets/sfc-dark-large.jpg';
+import imageSfcLessonBuilderDarkPlaceholder from '~/assets/sfc-dark-placeholder.jpg';
+import imageSfcLessonBuilderDark from '~/assets/sfc-dark.jpg';
 import imageSfcFaceVerificationLarge from '~/assets/sfc-face-verification-large.jpg';
 import imageSfcFaceVerificationPlaceholder from '~/assets/sfc-face-verification-placeholder.jpg';
 import imageSfcFaceVerification from '~/assets/sfc-face-verification.jpg';
 import imageSfcIdVerificationLarge from '~/assets/sfc-id-verification-large.jpg';
 import imageSfcIdVerificationPlaceholder from '~/assets/sfc-id-verification-placeholder.jpg';
 import imageSfcIdVerification from '~/assets/sfc-id-verification.jpg';
-import imageSprLessonBuilderLightLarge from '~/assets/sfc-light-large.jpg';
-import imageSprLessonBuilderLightPlaceholder from '~/assets/sfc-light-placeholder.jpg';
-import imageSprLessonBuilderLight from '~/assets/sfc-light.jpg';
-import imageSprBackgroundVolcanismLarge from '~/assets/spr-background-volcanism-large.jpg';
-import imageSprBackgroundVolcanismPlaceholder from '~/assets/spr-background-volcanism-placeholder.jpg';
-import imageSprBackgroundVolcanism from '~/assets/spr-background-volcanism.jpg';
-import imageSprDesignSystemDarkLarge from '~/assets/spr-design-system-dark-large.png';
-import imageSprDesignSystemDarkPlaceholder from '~/assets/spr-design-system-dark-placeholder.png';
-import imageSprDesignSystemDark from '~/assets/spr-design-system-dark.png';
-import imageSprDesignSystemLightLarge from '~/assets/spr-design-system-light-large.png';
-import imageSprDesignSystemLightPlaceholder from '~/assets/spr-design-system-light-placeholder.png';
-import imageSprDesignSystemLight from '~/assets/spr-design-system-light.png';
-import videoSprMotionLarge from '~/assets/spr-motion-large.mp4';
-import videoSprMotionPlaceholder from '~/assets/spr-motion-placeholder.jpg';
-import videoSprMotion from '~/assets/spr-motion.mp4';
+import imageSfcLessonBuilderLightLarge from '~/assets/sfc-light-large.jpg';
+import imageSfcLessonBuilderLightPlaceholder from '~/assets/sfc-light-placeholder.jpg';
+import imageSfcLessonBuilderLight from '~/assets/sfc-light.jpg';
+import imageSfcBackgroundVolcanismLarge from '~/assets/sfc-background-volcanism-large.jpg';
+import imageSfcBackgroundVolcanismPlaceholder from '~/assets/sfc-background-volcanism-placeholder.jpg';
+import imageSfcBackgroundVolcanism from '~/assets/sfc-background-volcanism.jpg';
+import imageSfcDesignSystemDarkLarge from '~/assets/sfc-design-system-dark-large.png';
+import imageSfcDesignSystemDarkPlaceholder from '~/assets/sfc-design-system-dark-placeholder.png';
+import imageSfcDesignSystemDark from '~/assets/sfc-design-system-dark.png';
+import imageSfcDesignSystemLightLarge from '~/assets/sfc-design-system-light-large.png';
+import imageSfcDesignSystemLightPlaceholder from '~/assets/sfc-design-system-light-placeholder.png';
+import imageSfcDesignSystemLight from '~/assets/sfc-design-system-light.png';
+import videoSfcMotionLarge from '~/assets/sfc-motion-large.jpg';
+import videoSfcMotionPlaceholder from '~/assets/sfc-motion-placeholder.jpg';
+import videoSfcMotion from '~/assets/sfc-motion.jpg';
 import { Footer } from '~/components/footer';
 import { Image } from '~/components/image';
 import { SegmentedControl, SegmentedControlOption } from '~/components/segmented-control';
@@ -98,15 +98,15 @@ export const SafetyFirstConsulting = () => {
                             key={theme}
                             srcSet={
                                 isDark
-                                    ? `${imageSprLessonBuilderDark} 1280w, ${imageSprLessonBuilderDarkLarge} 2560w`
-                                    : `${imageSprLessonBuilderLight} 1280w, ${imageSprLessonBuilderLightLarge} 2560w`
+                                    ? `${imageSfcLessonBuilderDark} 1280w, ${imageSfcLessonBuilderDarkLarge} 2560w`
+                                    : `${imageSfcLessonBuilderLight} 1280w, ${imageSfcLessonBuilderLightLarge} 2560w`
                             }
                             width={1280}
                             height={800}
                             placeholder={
                                 isDark
-                                    ? imageSprLessonBuilderDarkPlaceholder
-                                    : imageSprLessonBuilderLightPlaceholder
+                                    ? imageSfcLessonBuilderDarkPlaceholder
+                                    : imageSfcLessonBuilderLightPlaceholder
                             }
                             sizes={`(max-width: ${media.mobile}px) 100vw, (max-width: ${media.tablet}px) 800px, 1000px`}
                             alt="The aero lesson builder app dragging an audio component into a screen about plant cells."
@@ -185,15 +185,15 @@ export const SafetyFirstConsulting = () => {
                             key={theme}
                             srcSet={
                                 !isDark
-                                    ? `${imageSprDesignSystemDark} 1280w, ${imageSprDesignSystemDarkLarge} 2560w`
-                                    : `${imageSprDesignSystemLight} 1280w, ${imageSprDesignSystemLightLarge} 2560w`
+                                    ? `${imageSfcDesignSystemDark} 1280w, ${imageSfcDesignSystemDarkLarge} 2560w`
+                                    : `${imageSfcDesignSystemLight} 1280w, ${imageSfcDesignSystemLightLarge} 2560w`
                             }
                             width={1280}
                             height={800}
                             placeholder={
                                 !isDark
-                                    ? imageSprDesignSystemDarkPlaceholder
-                                    : imageSprDesignSystemLightPlaceholder
+                                    ? imageSfcDesignSystemDarkPlaceholder
+                                    : imageSfcDesignSystemLightPlaceholder
                             }
                             alt="The homepage of the aero design system docs website linking to principles and components."
                             sizes="100vw"
@@ -213,10 +213,10 @@ export const SafetyFirstConsulting = () => {
                         backgroundOverlayOpacity={0.5}
                         backgroundElement={
                             <Image
-                                srcSet={`${imageSprBackgroundVolcanism} 1280w, ${imageSprBackgroundVolcanismLarge} 2560w`}
+                                srcSet={`${imageSfcBackgroundVolcanism} 1280w, ${imageSfcBackgroundVolcanismLarge} 2560w`}
                                 width={1280}
                                 height={900}
-                                placeholder={imageSprBackgroundVolcanismPlaceholder}
+                                placeholder={imageSfcBackgroundVolcanismPlaceholder}
                                 alt="A dramatic ocean scene with lava forming a new land mass."
                                 sizes="100vw"
                             />
@@ -237,10 +237,10 @@ export const SafetyFirstConsulting = () => {
                             <Image
                                 raised
                                 className={styles.video}
-                                srcSet={`${videoSprMotion} 1280w, ${videoSprMotionLarge} 2560w`}
+                                srcSet={`${videoSfcMotion} 1280w, ${videoSfcMotionLarge} 2560w`}
                                 width={1280}
                                 height={800}
-                                placeholder={videoSprMotionPlaceholder}
+                                placeholder={videoSfcMotionPlaceholder}
                                 alt="A learning developer building and deploying an interactive lesson on volcanism using the app."
                                 sizes={`(max-width: ${media.mobile}px) 100vw, 50vw`}
                             />
