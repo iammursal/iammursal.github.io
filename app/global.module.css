@@ -43,7 +43,7 @@
 
 
     /* for grainy effect */
-    :global(.grain) {
+    /* :global(.grain) {
         position: fixed;
         top: 0;
         left: 0;
@@ -52,9 +52,9 @@
         pointer-events: none !important;
         z-index: 999999999999;
         transform: translateZ(0);
-    }
+    } */
 
-    :global(.grain:before) {
+    /* :global(.grain:before) {
         content: "";
         top: -10rem;
         left: -10rem;
@@ -67,7 +67,7 @@
         pointer-events: none !important;
         -webkit-animation: noise 1s steps(2) infinite;
         animation: noise 1s steps(2) infinite;
-    }
+    } */
 
 
     @-webkit-keyframes noise {

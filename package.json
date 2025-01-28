@@ -28,12 +28,13 @@
         "fs-extra": "^11.2.0",
         "isbot": "^4.1.0",
         "miniflare": "^3.20231030.4",
+        "postprocessing": "^6.36.0",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
         "rehype-img-size": "^1.0.1",
         "rehype-slug": "^6.0.0",
         "tailwind-merge": "^2.4.0",
-        "three": "^0.161.0",
+        "three": "^0.167.1",
         "three-stdlib": "^2.29.4"
     },
     "devDependencies": {
