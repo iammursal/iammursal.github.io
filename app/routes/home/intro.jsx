@@ -181,7 +181,7 @@ export function Intro({ id, sectionRef, scrollIndicatorHidden, ...rest }) {
                             <br />
                             <br />
                             <div className={styles.button} data-visible={visible}>
-                                <Button iconHoverShift href='https://storage.rxresu.me/clp9fxumy8j709hun4xlr5jq1/resumes/Resume-%20Murshal%20Akhtar%20Ansari.pdf' download target="_blank"   >
+                                <Button iconHoverShift href='Resume- Murshal Akhtar Ansari.pdf' download target="_blank"   >
                                     Download Resume <Icon
                                         className={styles.icon}
                                         data-shift={true}
