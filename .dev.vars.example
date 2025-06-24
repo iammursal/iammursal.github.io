@@ -1,5 +1,6 @@
 # Rename this file from .dev.vars.example to .dev.vars and paste in your credentials
 
+
 ENVIRONMENT=development
 
 # The email address to send emails to
