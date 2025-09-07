@@ -6,6 +6,22 @@
     flex-direction: column;
 }
 
+.background {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 55%;
+    height: 100%;
+    z-index: 0;
+    padding-right: 4rem;
+    overflow: hidden;
+
+    @media (--mediaMobile) {
+        width: 100%; 
+        padding-right: 0rem;
+    }
+}
+
 .text {
     max-width: 1024px;
     width: 100%;
@@ -44,6 +60,7 @@
     line-height: 1;
     margin-left: 7px;
     opacity: 0;
+    display: inline-block;
     transition: opacity var(--durationL) var(--bezierFastoutSlowin) 0.2s;
 
     @media (--mediaLaptop) {
@@ -74,6 +91,7 @@
 
 .title {
     letter-spacing: -0.03em;
+    display: inline-block; 
 }
 
 .row {
