@@ -13,6 +13,7 @@ import { useHydrated } from '~/hooks/useHydrated';
 import { cssProps, media } from '~/utils/style';
 import katakana from './katakana.svg';
 import styles from './project-summary.module.css';
+// import { Model } from '~/components/model';
 
 const Model = lazy(() =>
     import('~/components/model').then(module => ({ default: module.Model }))
@@ -110,9 +111,9 @@ export function ProjectSummary({
                     <>
                         {renderKatakana('laptop', visible)}
                         <div className={styles.model} data-device="laptop">
-                            {!modelLoaded && (
+                            {/* {!modelLoaded && (
                                 <Loader center className={styles.loader} data-visible={visible} />
-                            )}
+                            )} */}
                             {isHydrated && visible && (
                                 <Suspense>
                                     <Model
@@ -140,9 +141,9 @@ export function ProjectSummary({
                     <>
                         {renderKatakana('phone', visible)}
                         <div className={styles.model} data-device="phone">
-                            {!modelLoaded && (
+                            {/* {!modelLoaded && (
                                 <Loader center className={styles.loader} data-visible={visible} />
-                            )}
+                            )} */}
                             {isHydrated && visible && (
                                 <Suspense>
                                     <Model

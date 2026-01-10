@@ -8,17 +8,17 @@ export const ModelAnimationType = {
 
 export const deviceModels = {
   phone: {
-    url: iphone11,
-    width: 374,
-    height: 512,
+    url: '/app/assets/smartphone-blank-screen.png',
+    width: '60%',
+    height: 'auto',
     position: { x: 0, y: 0, z: 0 },
-    animation: ModelAnimationType.SpringUp,
+    animation: ModelAnimationType.SpringUp, 
   },
   laptop: {
-    url: macbookPro,
-    width: 1280,
-    height: 800,
+    url: '/app/assets/laptop-blank-screen.png',
+    width: '80%',
+    height: 'auto',
     position: { x: 0, y: 0, z: 0 },
-    animation: ModelAnimationType.LaptopOpen,
+    animation: ModelAnimationType.LaptopOpen, 
   },
 };

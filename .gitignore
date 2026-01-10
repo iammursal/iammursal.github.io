@@ -12,3 +12,4 @@ node_modules
 .wrangler/tmp/pages-0QLtnF/functionsWorker-0.11854413315497525.mjs
 .wrangler/tmp/pages-0QLtnF/functionsWorker-0.11854413315497525.mjs.map
 build
+.DS_Store

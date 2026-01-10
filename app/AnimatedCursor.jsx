@@ -79,8 +79,8 @@ export function AnimatedCursor({
             if (previousTimeRef.current !== undefined) {
                 coords.x += (endX.current - coords.x - 16) / 14
                 coords.y += (endY.current - coords.y - 16) / 14
-                cursorOuterRef.current.style.top = `${coords.y}px`
-                cursorOuterRef.current.style.left = `${coords.x}px`
+                cursorOuterRef.current['style']['top'] = `${coords.y}px`
+                cursorOuterRef.current['style']['left'] = `${coords.x}px`
             }
             previousTimeRef.current = time
             requestRef.current = requestAnimationFrame(animateOuterCursor)
